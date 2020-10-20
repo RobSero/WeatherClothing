@@ -26,7 +26,42 @@ async function getOneClothesData(req,res){
   }
 }
 
+
+// -------  CREATE CLOTHES ITEM (DELETE AFTER TESTING) -------------
+//  POST REQUEST - /api/clothes/<clothesId>
+
+async function createItem(req,res){
+  const clothesBody = req.body
+  console.log(clothesBody)
+  try {
+    const newClothesItem = new Clothes(clothesBody)
+    await newClothesItem.save()
+    res.json(newClothesItem)
+  } catch (err){
+    res.json(err.message)
+  }
+}
+
+
+
+// ------- DELETE ONE CLOTHES ITEM -------------
+//  DELETE REQUEST - /api/clothes/<clothesId>
+
+async function deleteOneClothesData(req,res){
+  const clothingId = req.params.id
+  try {
+    const oneClothesItem = await Clothes.deleteOne({ _id: clothingId })
+    res.json(oneClothesItem)
+  } catch (err){
+    res.json(err.message)
+  }
+}
+
+
+
 module.exports = {
   getAllClothesData,
-  getOneClothesData
+  getOneClothesData,
+  createItem,
+  deleteOneClothesData
 }
