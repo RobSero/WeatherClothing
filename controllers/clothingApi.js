@@ -1,11 +1,6 @@
 // HANDLE ALL CLOTHING API REQUESTS
-const mongoose = require('mongoose')
+const Clothes = require('../database/ClothingModels')
 
-const Clothes = mongoose.model('Clothes', { name: 'String' })
-const jumperOne = new Clothes({ name: 'green sexy jumper small' })
-jumperOne.save().then(()=> {
-  console.log('saved!')
-})
 
 const tShirt =   [{
   id: 0,
@@ -34,8 +29,9 @@ const tShirt =   [{
   link: 'hello'
 }]
 
-function getAllClothesData(req,res){
-  res.json(tShirt)
+async function getAllClothesData(req,res){
+  const allClothes = await Clothes.find()
+  res.json(allClothes)
 }
 
 module.exports = {
