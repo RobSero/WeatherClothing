@@ -1,18 +1,31 @@
 const express = require('express')
 const mongoose = require('mongoose')
-
-
 const app = express()
-mongoose.connect('mongodb://localhost:27017/clothingDB', { useNewUrlParser: true, useUnifiedTopology: true })
-// MIDDLEWARE
-const Clothes = mongoose.model('Clothes', { name: 'String' })
-const jumperOne = new Clothes({ name: 'green sexy jumper small' })
-jumperOne.save().then(()=> {
-  console.log('saved!')
-})
 
+
+// DATABASE
+mongoose.connect('mongodb://localhost:27017/clothingDB', { useNewUrlParser: true, useUnifiedTopology: true })
+
+
+
+// MIDDLEWARE
+app.use(express.json()) // body-parser
+app.use(express.urlencoded({ extended: false })) // access encoded data
+
+
+
+
+
+
+// STATICS
+app.use(express.static(`${__dirname}/frontend/build`))
+
+
+
+
+// CLIENT ENTERING WEBSITE - SEND REACT BUILD
 app.get('/*', (req,res) => {
-  res.send('<h1>Home</h1>')
+  res.sendFile(`${__dirname}/frontend/build/index.html`)
 })
 
 const port = process.env.PORT || 5000
