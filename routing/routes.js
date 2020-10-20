@@ -1,10 +1,14 @@
 const router = require('express').Router()
-const { getAllClothesData } = require('../controllers/clothingApi')
+const { getAllClothesData, getOneClothesData } = require('../controllers/clothingApi')
 
 
 //  FETCHING CLOTHING DATA
 router.route('/clothes')
   .get(getAllClothesData)
+
+router.route('/clothes/:id')
+  .get(getOneClothesData)
+
 
 module.exports = router
 

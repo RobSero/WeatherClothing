@@ -2,38 +2,31 @@
 const Clothes = require('../database/ClothingModels')
 
 
-const tShirt =   [{
-  id: 0,
-  title: 'hello',
-  description: 'hello',
-  price: 44,
-  image: 'hello',
-  colour: 'hello',
-  size: 'hello',
-  material: 'hello',
-  weather: 'hello',
-  category: 'hello',
-  link: 'hello'
-},
-{
-  id: 1,
-  title: 'hello',
-  description: 'hello',
-  price: 15,
-  image: 'hello',
-  colour: 'hello',
-  size: 'hello',
-  material: 'hello',
-  weather: 'hello',
-  category: 'hello',
-  link: 'hello'
-}]
+
+// ------- GET ALL CLOTHES ITEMS -------------
+//  GET REQUEST - /api/clothes
 
 async function getAllClothesData(req,res){
   const allClothes = await Clothes.find()
   res.json(allClothes)
 }
 
+
+
+// ------- GET ONE CLOTHES ITEM -------------
+//  GET REQUEST - /api/clothes/<clothesId>
+
+async function getOneClothesData(req,res){
+  const clothingId = req.params.id
+  try {
+    const oneClothesItem = await Clothes.findById(clothingId)
+    res.json(oneClothesItem)
+  } catch (err){
+    res.json(err.message)
+  }
+}
+
 module.exports = {
-  getAllClothesData
+  getAllClothesData,
+  getOneClothesData
 }
