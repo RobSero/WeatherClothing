@@ -1,4 +1,7 @@
 import React from 'react'
+import Header from './Header'
+import AllProductSection from './AllProductSection'
+
 
 class HomePage extends React.Component {
   constructor(props:String){
@@ -8,7 +11,10 @@ class HomePage extends React.Component {
 
   render(){
     return (
-      <h1>Hello wfrom homepage</h1>
+      <>
+      <Header />
+      <AllProductSection />
+      </>
     )
   }
 }
