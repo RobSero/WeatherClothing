@@ -84,7 +84,6 @@ class CardScroller extends React.Component {
           arrowLeft={ArrowLeft}
           arrowRight={ArrowRight}
           selected={selected}
-          wheel={false}
           transition={1}
           inertiaScrolling={true}
           onSelect={this.onSelect}
