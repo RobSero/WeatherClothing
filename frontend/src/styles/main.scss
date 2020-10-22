@@ -16,47 +16,44 @@ body {
   background-color: white;
   color: #20122E;
 }
+/* ----------------------------------------
+             NAVBAR & FOOTER
+------------------------------------------- */
 
+nav {
+  max-height: 50px;
+  padding: 5px 10px;
+  .logo {
+height: 40px;
+  }
+}
 
+footer {
+  max-height: 25px;
+  text-align: center;
+}
 
 
 /* ----------------------------------------
-                CARD DESIGN
+                SPINNING LOGO
 ------------------------------------------- */
-
-
-.card-container {
-  margin: 10px;
-  height: 350px;
-  width: 350px;
-  position: relative;
+.header-logo, .logo {
+  animation-name: spin;
+    animation-duration: 3000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
 }
 
-.card {
-  width: 80%;
-  height: 95%;
-  border: grey solid 1px;
-  position: absolute;
-  left: 0;
-  border-radius: 15px;
 
-  .card-image {
-    width: 95%;
-  }
+@-moz-keyframes spin {
+  from { -moz-transform: rotate(0deg); }
+  to { -moz-transform: rotate(360deg); }
 }
-
-.card-info {
-  width: 120px;
-  height: 120px;
-  position: absolute;
-  bottom: 25px;
-  border-radius: 15px;
-  right: 5px;
-  justify-items: center;
-  text-align: center;
-
-  .details {
-
-    margin: 30px auto;
-  }
+@-webkit-keyframes spin {
+  from { -webkit-transform: rotate(0deg); }
+  to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+  from {transform:rotate(0deg);}
+  to {transform:rotate(360deg);}
 }
