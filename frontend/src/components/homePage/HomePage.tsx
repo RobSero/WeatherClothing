@@ -4,9 +4,11 @@ import AllProductSection from './AllProductSection'
 
 
 function HomePage() {
+const [weather, setWeather] = React.useState(null)
 
-  const updateWeather = (coords:any)=> {
-    console.log('GETTING WEATHER' + coords);
+  const updateWeather = (weatherData:any)=> {
+    console.log('GETTING WEATHER')
+    setWeather(weatherData)
   }
 
     return (

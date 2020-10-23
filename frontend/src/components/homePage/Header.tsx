@@ -1,4 +1,5 @@
 import React from 'react';
+import {getWeatherData} from '../../lib/api'
 
 export default function Header(props:any) {
   const [locationCoords, setCoords] = React.useState([51.5074,0.1278])
@@ -13,10 +14,15 @@ export default function Header(props:any) {
     }
   }, [])
 
-  const getWeatherData = () => {
-    props.updateWeather(locationCoords)
-
+  const findWeatherData = async() => {
+    try {
+      const res = await getWeatherData(locationCoords)
+      props.updateWeather(res.data.daily[3].weather[0])
   }
+  catch(err){
+    console.log(err);
+    
+  }}
 
 
   return (
@@ -25,7 +31,7 @@ export default function Header(props:any) {
       <h1>find the perfect clothes
 for the weather</h1>
 <p>Get them delivered right in time for the day</p>
-<button onClick={getWeatherData}>Weather Check</button>
+<button onClick={findWeatherData}>Weather Check</button>
     </header>
   );
 }
