@@ -3,20 +3,19 @@ import Header from './Header'
 import AllProductSection from './AllProductSection'
 
 
-class HomePage extends React.Component {
-  constructor(props:String){
-    super(props)
+function HomePage() {
+
+  const updateWeather = (coords:any)=> {
+    console.log('GETTING WEATHER' + coords);
   }
 
-
-  render(){
     return (
       <>
-      <Header />
+      <Header updateWeather={updateWeather} />
       <AllProductSection />
       </>
     )
-  }
+  
 }
 
 export default HomePage
