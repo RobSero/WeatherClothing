@@ -1,8 +1,12 @@
 import React from 'react';
 import {getWeatherData} from '../../lib/api'
+import Scroll from 'react-scroll';
+
+const scroll = Scroll.animateScroll
 
 export default function Header(props:any) {
   const [locationCoords, setCoords] = React.useState([51.5074,0.1278])
+  const [loadingSpinner, setLoadingSpin] = React.useState(false)
 
 
   React.useEffect(()=> {
@@ -17,7 +21,18 @@ export default function Header(props:any) {
   const findWeatherData = async() => {
     try {
       const res = await getWeatherData(locationCoords)
-      props.updateWeather(res.data.daily[3].weather[0])
+      const weatherData = res.data.daily[3].weather[0]
+      setLoadingSpin(true)
+      setTimeout(()=> {
+        props.updateWeather(weatherData)
+        setLoadingSpin(false)
+      },2500)
+      setTimeout(()=> {
+        scroll.scrollTo(800)
+      },4000)
+      
+   
+      
   }
   catch(err){
     console.log(err);
@@ -27,11 +42,21 @@ export default function Header(props:any) {
 
   return (
     <header className='heading-container primary'>
-      <img className='header-logo' src='https://res.cloudinary.com/dy7eycl8m/image/upload/v1603290472/whitepropeller_l2scuy.png' />
+      <img className={loadingSpinner? 'header-logo fast' : 'header-logo'} src='https://res.cloudinary.com/dy7eycl8m/image/upload/v1603290472/whitepropeller_l2scuy.png' />
       <h1>find the perfect clothes
 for the weather</h1>
 <p>Get them delivered right in time for the day</p>
-<button onClick={findWeatherData}>Weather Check</button>
+{!props.weather && !loadingSpinner? <button className='btn-grad' onClick={findWeatherData}>Weather Check</button> : ''}
+
+{props.weather? (
+  <div className='animate__animated animate__zoomInDown'>
+<img src={`http://openweathermap.org/img/wn/${props.weather.icon}@2x.png`}/>
+<p>next week will be {props.weather.description}</p>
+</div>
+) : ''
+}
+
+
     </header>
   );
 }

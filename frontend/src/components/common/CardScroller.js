@@ -77,8 +77,8 @@ class CardScroller extends React.Component {
     const menu = [<Card key='1' />,<Card key='2' />,<Card key='3' />,<Card key='4' />,<Card key='5' />,<Card key='6' />,<Card key='7' />,<Card key='8' />,<Card key='9' />,<Card key='10' />,<Card key='11' />,<Card key='12' />,<Card key='13' />,<Card key='14' />];
  
     return (
-      <div className="App">
-      <h3>jackets</h3>
+      <div className="card-slider">
+      <h3 className='slider-header'>jackets</h3>
         <ScrollMenu
           data={menu}
           arrowLeft={ArrowLeft}

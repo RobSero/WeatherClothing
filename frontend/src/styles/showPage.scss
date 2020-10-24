@@ -1,0 +1,10 @@
+.flex-show-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
+  .flex-item {
+    background-color: green;
+    width: 500px;
+  }
+}

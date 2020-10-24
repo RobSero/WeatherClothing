@@ -1,5 +1,12 @@
 const router = require('express').Router()
 const { getAllClothesData, getOneClothesData, createItem, deleteOneClothesData } = require('../controllers/clothingApi')
+const { seedDatabase } = require('../database/seed')
+
+
+
+//  SEED ITEMS
+router.route('/clothes/seed')
+  .get(seedDatabase)
 
 
 //  FETCHING CLOTHING DATA
@@ -16,6 +23,8 @@ router.route('/clothes')
 
 router.route('/clothes/:id')
   .delete(deleteOneClothesData)
+
+
 
 module.exports = router
 

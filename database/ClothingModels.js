@@ -9,8 +9,9 @@ const ClothingSchema = new mongoose.Schema({
   colour: { type: String, required: true },
   size: { type: String, required: true },
   material: { type: String, required: true },
-  weather: { type: String, required: true },
-  category: { type: String, required: true },
+  weather: [{ type: Number, required: true }],  //reference to the openWeather API weather codes
+  category: { type: String, required: true }, 
+  site: { type: String, required: true } ,
   link: { type: String, required: true }
 })
 
