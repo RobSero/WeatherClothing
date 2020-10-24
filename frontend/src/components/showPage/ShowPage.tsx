@@ -57,20 +57,33 @@ export default function ShowPage() {
       <Navbar />
       <div className='show-container'>
         <div className='flex-show-section'>
-          <div className='flex-item'>
-            <img src={clothesData.image} />
+          <div className='flex-item animate__animated animate__fadeInLeft'>
+            <img className='show-image' src={clothesData.image} />
           </div>
-          <div className='flex-item'>
+          <div className='flex-item animate__animated animate__fadeInRight'>
+            <div className='information'>
             <h3>{clothesData.title}</h3>
-            <p>{clothesData.price}</p>
-            <p>{clothesData.description}</p>
-            <p>colour: {clothesData.colour}</p>
-            <p>size: {clothesData.size}</p>
-            <p>material: {clothesData.material}</p>
-  <a className='btn-grad' href={clothesData.link}>View on {clothesData.site}</a>
+            <p className='price'>£{clothesData.price.toFixed(2)}</p>
+            <p className='description'>{clothesData.description}</p>
+            <p className='details'><span className='info-label'>colour:</span> {clothesData.colour}</p>
+            <p className='details'><span className='info-label'>sizes:</span> {clothesData.size}</p>
+            <p className='details'><span className='info-label'>materials:</span> {clothesData.material}</p>
+            <div className='sizes-box'>
+    <p className='sizes-header'>Available Sizes</p>
+    <p>More available sizes may be found on the brand websites for these products</p>
+  </div>
+  <div className='flex-weather-container center'>
+    <img className='flex-weather-item' src='http://openweathermap.org/img/wn/10d@2x.png' />
+    <img className='flex-weather-item' src='http://openweathermap.org/img/wn/10d@2x.png' />
+    <img className='flex-weather-item' src='http://openweathermap.org/img/wn/10d@2x.png' />
+    <img className='flex-weather-item' src='http://openweathermap.org/img/wn/10d@2x.png' />
+  </div>
+  <a className='btn-grad mid' href={clothesData.link} target='_blank'>view on {clothesData.site}</a>
+  
+  </div>
           </div>
         </div>
-    {/* <CardScroller /> */}
+    <CardScroller category={clothesData.category} clothes={clothes[property]}  />
       </div>
       <Footer />
     </>

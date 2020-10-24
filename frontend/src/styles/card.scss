@@ -14,7 +14,6 @@
 .card {
   width: 80%;
   height: 95%;
-  border: grey solid 1px;
   position: absolute;
   left: 0;
   border-radius: 15px;
@@ -30,7 +29,8 @@
   transform-style: preserve-3d;
 
     .card-image {
-      width: 95%;
+      width: 100%;
+      border-radius: 15px;
     }
   }
   
@@ -60,7 +60,30 @@
   border-radius: 15px;
   color: #20122E;
   transform: rotateY(180deg);
+
+  h4 {
+    font-size: 0.9rem;
+    padding: 2px 15px;
+  }
+  .label {
+    font-size:0.6rem;
+    margin-bottom: -3px;
+  }
+
+  .details {
+    font-size: 1rem;
+  }
 }
+
+.flex-weather-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 80%;
+  margin: 0 auto;
+}
+  .flex-weather-item {
+    width:20%
+  }
 
 .card-info {
   width: 120px;
@@ -74,5 +97,6 @@
 
   .details {
     margin: 30px auto;
+    font-size: 1rem;
   }
 }

@@ -21,6 +21,10 @@ body {
   background-color: white;
   color: #20122E;
 }
+
+.center {
+  margin: 0 auto;
+}
 /* ----------------------------------------
              NAVBAR & FOOTER
 ------------------------------------------- */
@@ -81,14 +85,24 @@ footer {
    margin: 20px auto;
    padding: 15px 45px;
    text-align: center;
-   text-transform: uppercase;
    transition: 0.5s;
    background-size: 200% auto;
    color: white;            
    box-shadow: 0 0 5px #eee;
    border-radius: 10px;
    display: block;
+   text-decoration: none!important;
+   font-size: 1rem;
  }
+
+.sml {
+  padding: 10px 20px;
+}
+
+.mid {
+  width: 50%;
+  margin-top: 50px
+}
 
  .btn-grad:hover {
    background-position: right center; /* change the direction of the change here */
