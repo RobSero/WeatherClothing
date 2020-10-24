@@ -3,7 +3,7 @@ import Navbar from '../common/Navbar'
 import Footer from '../common/Footer'
 import { getOneItem } from '../../lib/api'
 import CardScroller from '../common/CardScroller'
-
+import {useParams} from 'react-router-dom'
 
 interface ClothesDetails {
   id: string,
@@ -20,14 +20,22 @@ interface ClothesDetails {
   link: string
 }
 
+interface ParamValues {
+  id: string
+}
+
 
 export default function ShowPage() {
   const [clothesData, setClothes] = React.useState<ClothesDetails>()
+  let {id} = useParams<ParamValues>()
+
+
+  
 
   React.useEffect(() => {
     const getClothes = async () => {
       try {
-        const res = await getOneItem('5f9409294d740f1c035b452f')
+        const res = await getOneItem(id)
         setClothes(res.data)
         console.log(res.data);
       } catch (err) {
@@ -36,6 +44,8 @@ export default function ShowPage() {
     }
     getClothes()
   }, [])
+
+
 
   if (!clothesData) {
     return null
@@ -60,7 +70,7 @@ export default function ShowPage() {
   <a className='btn-grad' href={clothesData.link}>View on {clothesData.site}</a>
           </div>
         </div>
-    <CardScroller />
+    {/* <CardScroller /> */}
       </div>
       <Footer />
     </>

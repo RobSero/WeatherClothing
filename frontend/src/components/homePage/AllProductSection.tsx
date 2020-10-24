@@ -3,8 +3,8 @@ import CardScroller from '../common/CardScroller'
 import {getClothesRequest} from '../../lib/api'
 
 
-export default function AllProductSection({weather}:any) {
-const [clothes, setClothes] = React.useState()
+export default function AllProductSection(props:any) {
+const [clothes, setClothes] = React.useState<any>({})
 
 
 
@@ -17,16 +17,21 @@ React.useEffect(()=> {
       console.log(err);
     }
   }
-  getClothes(weather)
-},[weather])
+  getClothes(Math.floor(props.weather/100))
+},[props])
 
+
+const clothingLists = []
+for (const property in clothes){
+  console.log(property, clothes[property]);
+  clothingLists.push(<CardScroller category={property} clothes={clothes[property]} />)
+}
 
   return (
     <div className='productlist-container' id='home-products'>
-    <h3 className='productlist-header'>see all products...</h3>
-    <CardScroller />
-    <CardScroller />
-    <CardScroller />
+    <h3 className='productlist-header'>{!props.weather? 'see all products...' : `products for ${props.weather.description}`}</h3>
+    {clothingLists}
+
     </div>
   );
 }

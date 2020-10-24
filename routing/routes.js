@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { getAllClothesData, getOneClothesData, createItem, deleteOneClothesData } = require('../controllers/clothingApi')
+const { getAllClothesData, getOneClothesData, createItem, deleteOneClothesData, getClothesDataByWeather } = require('../controllers/clothingApi')
 const { seedDatabase } = require('../database/seed')
 
 
@@ -15,6 +15,10 @@ router.route('/clothes')
 
 router.route('/clothes/:id')
   .get(getOneClothesData)
+
+router.route('/clothes/weather/:weatherId')
+  .get(getClothesDataByWeather)
+
 
 
 // UPDATE DATABASE DATA

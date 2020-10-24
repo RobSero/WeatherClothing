@@ -10,7 +10,7 @@ interface WeatherDetails {
 }
 
 function HomePage() {
-const [weather, setWeather] = React.useState<WeatherDetails>({id:0})
+const [weather, setWeather] = React.useState<WeatherDetails>()
 
   const updateWeather = (weatherData:any)=> {
     console.log('GETTING WEATHER')
@@ -20,7 +20,10 @@ const [weather, setWeather] = React.useState<WeatherDetails>({id:0})
     return (
       <>
       <Header updateWeather={updateWeather} weather={weather} />
-      <AllProductSection weather={weather.id} />
+      {weather && weather.id? 
+      <AllProductSection weather={weather} /> : 
+      <AllProductSection weather={0} /> }
+      
       </>
     )
   

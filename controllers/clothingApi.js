@@ -27,6 +27,49 @@ async function getOneClothesData(req,res){
 }
 
 
+// ------- GET CLOTHES BY WEATHERCODE -------------
+//  GET REQUEST - /api/clothes/<clothesId>
+
+async function getClothesDataByWeather(req,res){
+  const weatherId = req.params.weatherId
+  let clothesItems
+  try {
+    if (!parseInt(weatherId)){
+      console.log('FALSE')
+      clothesItems = await Clothes.find()
+    } else {
+      clothesItems = await Clothes.find({ weather: weatherId })
+    }
+    const clothesObject = {}
+    clothesItems.forEach(clothesItem => {
+      if (clothesObject.hasOwnProperty(clothesItem.category)){
+        clothesObject[clothesItem.category].push(clothesItem)
+      } else {
+        clothesObject[clothesItem.category] = [clothesItem]
+      }
+    })
+    res.json(clothesObject)
+
+  } catch (err){
+    res.json(err.message)
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // -------  CREATE CLOTHES ITEM (DELETE AFTER TESTING) -------------
 //  POST REQUEST - /api/clothes/<clothesId>
 
@@ -62,6 +105,7 @@ async function deleteOneClothesData(req,res){
 module.exports = {
   getAllClothesData,
   getOneClothesData,
+  getClothesDataByWeather,
   createItem,
   deleteOneClothesData
 }

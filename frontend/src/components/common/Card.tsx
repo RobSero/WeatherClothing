@@ -1,14 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export default function Card() {
+export default function Card(props:any) {
   return (
     <div className='card-container'>
-      <Link to='/1'>
+      <Link to={`/${props._id}`}>
         <div className='card'>
           <div className='card-inner'>
             <div className='card-front'>
-              <img className='card-image' src='https://res.cloudinary.com/dy7eycl8m/image/upload/v1603289061/pngwave_67_x6rjcp.png' />
+              <img className='card-image' src={props.image} />
             </div>
             <div className='card-back'>
               <p>Back</p>
@@ -18,8 +18,8 @@ export default function Card() {
       </Link>
       <div className='card-info primary'>
         <div className='details'>
-          <p>£4.99</p>
-          <p>Asos</p>
+  <p>£{props.price}</p>
+  <p>{props.site}</p>
         </div>
       </div>
 
