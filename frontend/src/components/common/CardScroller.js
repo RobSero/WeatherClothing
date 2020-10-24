@@ -67,8 +67,8 @@ class CardScroller extends React.Component {
     const menu = this.menuItems;
  
     return (
-      <div className="App">
-      <h3>{this.props.category}</h3>
+      <div className="card-slider">
+      <h3 className='slider-header'>{this.props.category}</h3>
         <ScrollMenu
           data={menu}
           arrowLeft={ArrowLeft}

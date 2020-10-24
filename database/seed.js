@@ -17,7 +17,7 @@ const seedJumpers = [{
   title: 'Nike Plus Club crew neck sweat in stone',
   description: 'when it comes to innovative sportswear, no brand does it better than Nike. Discover the best-selling trainers in the game in our Nike at ASOS edit.',
   price: 37.95,
-  image: 'https://images.asos-media.com/products/adidas-originals-sweatshirt-with-3-stripes-in-navy/20050362-1-navy?$XXL$&wid=513&fit=constrain',
+  image: 'https://images.asos-media.com/products/nike-plus-club-crew-neck-sweat-in-stone/14826696-1-stone?$XXL$&wid=513&fit=constrain',
   colour: 'stone',
   size: 'S/M/L',
   material: 'cotton',
