@@ -2,26 +2,9 @@ import React from 'react';
 import ScrollMenu from 'react-horizontal-scrolling-menu';
 import Card from './Card'
  
-// list of items
-const list = [
-  { name: 'item1' },
-  { name: 'item2' },
-  { name: 'item3' },
-  { name: 'item4' },
-  { name: 'item5' },
-  { name: 'item6' },
-  { name: 'item7' },
-  { name: 'item8' },
-  { name: 'item9' }
-];
+
  
-// One item component
-// selected prop will be passed
-const MenuItem = ({text, selected}) => {
-  return <div
-    className={`menu-item ${selected ? 'active' : ''}`}
-    >{text}</div>;
-};
+
  
 // All items component
 // Important! add unique key

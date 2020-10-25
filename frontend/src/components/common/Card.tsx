@@ -11,16 +11,16 @@ export default function Card(props: any) {
       <div className='card'>
         <div className='card-inner'>
           <div className='card-front'>
-            <img className='card-image' src={props.image} />
+            <img className='card-image' src={props.image} alt={props.title} />
           </div>
           <div className='card-back'>
             <h4>{props.title}</h4>
             <div className='flex-weather-container'>
               {props.weather.map((weatherCode:number) => {
-                return <img className='flex-weather-item' src={getWeatherSymbols(weatherCode)} />
+                return <img key={Math.random()} className='flex-weather-item' src={getWeatherSymbols(weatherCode)} alt='weather-icon' />
               })}
             </div>
-            <Link to={`/${props._id}`}> <button className='btn-grad sml'>Show details</button></Link>
+            <Link className='link-styles' to={`/${props._id}`}> <button className='btn-grad sml'>Show details</button></Link>
 
           </div>
         </div>

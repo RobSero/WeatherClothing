@@ -13,7 +13,6 @@ function HomePage() {
 const [weather, setWeather] = React.useState<WeatherDetails>()
 
   const updateWeather = (weatherData:any)=> {
-    console.log('GETTING WEATHER')
     setWeather(weatherData)
   }
 

@@ -1,8 +1,6 @@
 import React from 'react'
 import Navbar from '../common/Navbar'
-import Footer from '../common/Footer'
 import { getOneItem } from '../../lib/api'
-import CardScroller from '../common/CardScroller'
 import { useParams } from 'react-router-dom'
 import {getWeatherSymbols} from '../../lib/api'
 
@@ -44,7 +42,7 @@ export default function ShowPage() {
       }
     }
     getClothes()
-  }, [])
+  }, [id])
 
 
 
@@ -59,7 +57,7 @@ export default function ShowPage() {
       <div className='show-container'>
         <div className='flex-show-section'>
           <div className='flex-item animate__animated animate__fadeInLeft'>
-            <img className='show-image' src={clothesData.image} />
+            <img className='show-image' src={clothesData.image} alt={clothesData.title} />
           </div>
           <div className='flex-item animate__animated animate__fadeInRight'>
             <div className='information'>
@@ -75,10 +73,10 @@ export default function ShowPage() {
               </div>
               <div className='flex-weather-container center'>
               {clothesData.weather.map((weatherCode:number) => {
-                return <img className='flex-weather-item' src={getWeatherSymbols(weatherCode)} />
+                return <img key={Math.random()} className='flex-weather-item' src={getWeatherSymbols(weatherCode)} alt='weather symbol' />
               })}
               </div>
-              <a className='btn-grad mid' href={clothesData.link} target='_blank'>view on {clothesData.site}</a>
+              <a className='btn-grad mid' href={clothesData.link} target='_blank' rel="noopener noreferrer">view on {clothesData.site}</a>
 
             </div>
           </div>

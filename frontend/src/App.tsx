@@ -11,7 +11,6 @@ const App = () => {
       <Route exact path='/:id' component={ShowPage} />
     </Switch>
     </BrowserRouter>
-
   )
 }
 

@@ -24,7 +24,7 @@ React.useEffect(()=> {
 const clothingLists = []
 for (const property in clothes){
   console.log(property, clothes[property]);
-  clothingLists.push(<CardScroller category={property} clothes={clothes[property]} />)
+  clothingLists.push(<CardScroller key={Math.random()} category={property} clothes={clothes[property]} />)
 }
 
   return (
