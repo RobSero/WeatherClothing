@@ -1,6 +1,6 @@
 const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLSchema, GraphQLList, GraphQLFloat } = require('graphql')
 const axios = require('axios')
-require('dotenv').config()
+// require('dotenv').config()
 const key = process.env.WEATHER_API_KEY
 
 const forecastType = new GraphQLObjectType({
