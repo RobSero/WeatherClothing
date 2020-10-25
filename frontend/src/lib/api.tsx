@@ -5,6 +5,7 @@ export const getWeatherData = async ([latitude,longitude]:Number[]) => {
     return await axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${key}&exclude=minutely,hourly,current`)
   } 
 
+  
 
   export const getOneItem = async(clothesId:string) => {
     return await axios.get(`api/clothes/${clothesId}`)
