@@ -1,6 +1,6 @@
 # CoolClouds Clothing Suggestions
 
-![database diagram](https://bamboostatic.s3.eu-west-2.amazonaws.com/static/img/homepage.png)
+![database diagram](assets/home.png)
  
 *Deployed Site:* https://coolclouds.herokuapp.com/
 
@@ -22,7 +22,7 @@ The requirement was just an MVP to explore if this would even be worth continuin
 The full stack application was built using the MERN stack as Express offered a clean way to build out a RESTful API with speed and I enjoy using MongoDB's flexible document structure. I also wanted to improve on my TypeScript abilities so most of the client side was built out with this in mind.
 
 
-![database diagram](https://bamboostatic.s3.eu-west-2.amazonaws.com/static/img/productpage.png)
+![database diagram](assets/showpage.png)
  
 ## **2.0 Technology Summary**
  
@@ -50,7 +50,7 @@ The server side of the application was built with the Express.js framework as I 
  
 ## **3.0 - Database Structure**
  
-![database diagram](https://bamboostatic.s3.eu-west-2.amazonaws.com/static/img/databasemodel.png)
+![database diagram](assets/database.png)
  
 The database on MongoDB only required one collection which was to contain all of the clothing items so it made CRUD functionality very fast to setup. 
 There are certainly other ways for seperating out this data (for example by clothing type) however the proejct brief did not demand this. 
