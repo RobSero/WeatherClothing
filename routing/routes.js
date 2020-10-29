@@ -2,7 +2,10 @@ const router = require('express').Router()
 const { getAllClothesData, getOneClothesData, createItem, deleteOneClothesData, getClothesDataByWeather } = require('../controllers/clothingApi')
 const { seedDatabase } = require('../database/seed')
 
-
+// TEST Route
+router.route('').get((req,res)=> {
+  res.status(200).send('successful call')
+})
 
 //  SEED ITEMS
 router.route('/clothes/seed')
