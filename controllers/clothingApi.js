@@ -75,11 +75,10 @@ async function getClothesDataByWeather(req,res){
 
 async function createItem(req,res){
   const clothesBody = req.body
-  console.log(clothesBody)
   try {
     const newClothesItem = new Clothes(clothesBody)
     await newClothesItem.save()
-    res.json(newClothesItem)
+    res.status(201).json(newClothesItem)
   } catch (err){
     res.json(err.message)
   }

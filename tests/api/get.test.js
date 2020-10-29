@@ -8,6 +8,7 @@ const { getOneClothesData, getAllClothesData } = require('../../controllers/clot
 
 
 describe('TEST THE API ROOT RESPONSE', ()=> {
+  
   test('Should respond with 200 status', () => {
     return request(index).get('/api').then(res => {
       expect(res.statusCode).toBe(200)
@@ -21,7 +22,7 @@ describe('TEST THE API ROOT RESPONSE', ()=> {
 })
 
 
-
+//  ----------------- GET ONE REQUESTS -----------------------
 
 describe('DATABASE GET ONE REQUESTS', () => {
   let connection
@@ -41,8 +42,7 @@ describe('DATABASE GET ONE REQUESTS', () => {
   })
 
 
-  //  ----------------- GET ONE REQUESTS -----------------------
-  const productId = '5f95c23547c0a41c9c03b0c5'
+  const productId = '5f9aef6a767fac0792316abb'
   const urlPath = `/api/clothes/${productId}`
 
   test('api should have 200 response status', async () => {
@@ -69,6 +69,8 @@ describe('DATABASE GET ONE REQUESTS', () => {
 
 
 
+//  ----------------- GET ALL  REQUESTS -----------------------
+
 describe('DATABASE GET ALL REQUESTS', () => {
   let connection
   let db
@@ -85,9 +87,6 @@ describe('DATABASE GET ALL REQUESTS', () => {
     await connection.close() 
     await db.close()
   })
-
-
-  //  ----------------- GET ALL  REQUESTS -----------------------
 
   const urlPath = '/api/clothes'
 
@@ -114,7 +113,5 @@ describe('DATABASE GET ALL REQUESTS', () => {
       expect(res.body).toBeInstanceOf(Array)
     })
   })
-
-
 })
 
