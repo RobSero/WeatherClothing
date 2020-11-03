@@ -51,7 +51,10 @@ for the weather</h1>
             if (loading) return <></>
             if (error) console.log(error)
             const { description, icon, } = data.forecast.weather[0]
-            setWeather(data.forecast.weather[0])
+            console.log(data)
+            if(data){
+              setWeather(data.forecast.weather[0])
+            }
 //         DISPLAY GET WEATHER BUTTON OR WEATHER ICON
             if (props.weather) {
               return (
