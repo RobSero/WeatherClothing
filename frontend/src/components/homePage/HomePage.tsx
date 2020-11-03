@@ -20,8 +20,8 @@ const [weather, setWeather] = React.useState<WeatherDetails>()
       <>
       <Header updateWeather={updateWeather} weather={weather} />
       {weather && weather.id? 
-      <AllProductSection weather={weather} /> : 
-      <AllProductSection weather={0} /> }
+      <AllProductSection weatherCode={weather.id} weatherDescription={weather.description} /> : 
+      <AllProductSection weatherCode={0} /> }
       
       </>
     )

@@ -1,14 +1,16 @@
 import React from 'react';
 import { getWeatherData } from '../../lib/api'
+import { WEATHER_QUERY } from '../../lib/graphQLQueries'
+import { Query } from 'react-apollo'
 import Scroll from 'react-scroll';
+import { useQuery } from '@apollo/client';
 const scroll = Scroll.animateScroll
-
-
 
 
 export default function Header(props: any) {
   const [locationCoords, setCoords] = React.useState([51.5074, 0.1278])
   const [loadingSpinner, setLoadingSpin] = React.useState(false)
+  const [weatherInfo, setWeather] = React.useState()
 
 
   React.useEffect(() => {
@@ -21,11 +23,9 @@ export default function Header(props: any) {
 
   const findWeatherData = async () => {
     try {
-      const res = await getWeatherData(locationCoords)
-      const weatherData = res.data.daily[3].weather[0]
       setLoadingSpin(true)
       setTimeout(() => {
-        props.updateWeather(weatherData)
+        props.updateWeather(weatherInfo)
         setLoadingSpin(false)
       }, 2500)
       setTimeout(() => {
@@ -44,15 +44,28 @@ export default function Header(props: any) {
       <h1>find the perfect clothes
 for the weather</h1>
       <p>get them delivered right in time for the day</p>
-      {!props.weather && !loadingSpinner ? <button className='btn-grad' onClick={findWeatherData}>Weather Check</button> : ''}
+      <Query query={WEATHER_QUERY} variables={{ day: 2, lat: locationCoords[0], lon: locationCoords[1] }}>
+        {
+          ({ loading, error, data }: any) => {
+            if (loading) return <h1>LOADING NOW...</h1>
+            if (error) console.log(error)
+            const { description, icon, } = data.forecast.weather[0]
+            setWeather(data.forecast.weather[0])
 
-      {props.weather ? (
-        <div className='animate__animated animate__zoomInDown'>
-          <img className='weather-main-logo' src={`http://openweathermap.org/img/wn/${props.weather.icon}@2x.png`} alt={props.weather.description} />
-          <p>next week will be {props.weather.description}</p>
-        </div>
-      ) : ''
-      }
+            if (props.weather) {
+              return (
+                <div className='animate__animated animate__zoomInDown'>
+                  <img className='weather-main-logo' src={`http://openweathermap.org/img/wn/${icon}@2x.png`} alt={description} />
+                  <p>next week will be {description}</p>
+                </div>)
+            } else {
+              return <button className='btn-grad' onClick={findWeatherData}>Weather Check</button>
+            }
+          }
+
+        }
+
+      </Query>
     </header>
   );
 }

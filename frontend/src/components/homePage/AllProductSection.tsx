@@ -9,7 +9,9 @@ const [clothes, setClothes] = React.useState<any>({})
 
 
 React.useEffect(()=> {
-  const getClothes = async(weatherCode:number) => {
+  const getClothes = async(weatherCode:number) => { 
+    console.log(weatherCode);
+    
     try {
       const res = await getClothesRequest(weatherCode)
       setClothes(res.data)
@@ -17,7 +19,7 @@ React.useEffect(()=> {
       console.log(err);
     }
   }
-  getClothes(Math.floor(props.weather/100))
+  getClothes(Math.floor(props.weatherCode/100))
 },[props])
 
 
@@ -29,7 +31,7 @@ for (const property in clothes){
 
   return (
     <div className='productlist-container' id='home-products'>
-    <h3 className='productlist-header'>{!props.weather? 'see all products...' : `products for ${props.weather.description}`}</h3>
+    <h3 className='productlist-header'>{!props.weatherDescription? 'see all products...' : `products for ${props.weatherDescription}`}</h3>
     {clothingLists}
 
     </div>
