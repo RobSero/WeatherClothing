@@ -5,7 +5,7 @@ const path = require('path')
 const dbURI = require('./config/environment')
 const router = require('./routing/routes')
 const app = express()
-const cors = require('cors')
+// const cors = require('cors')
 const schema = require('./database/clothesSchema')
 
 
@@ -16,7 +16,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
 
 
 // MIDDLEWARE
-app.use(cors())
+// app.use(cors())
 app.use(express.json()) // body-parser
 app.use(express.urlencoded({ extended: false })) // access encoded data
 app.use('/api/graphQL', graphqlHTTP({
