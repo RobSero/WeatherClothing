@@ -54,11 +54,12 @@ for the weather</h1>
             }console.log(error)
             const { description, icon, } = data.forecast.weather[0]
             console.log(data)
-            if(data && data.forecast){
-              setWeather(data.forecast.weather[0])
-            }
+            setTimeout(()=>{
+              if(data && data.forecast){
+                setWeather(data.forecast.weather[0])
+              }
+            },1000)
 //         DISPLAY GET WEATHER BUTTON OR WEATHER ICON
-
             if (props.weather) {
               return (
                 <div className='animate__animated animate__zoomInDown'>
