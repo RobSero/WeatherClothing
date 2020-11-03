@@ -7,6 +7,7 @@ const Clothes = require('../database/ClothingModels')
 //  GET REQUEST - /api/clothes
 
 async function getAllClothesData(req,res){
+  console.log('GETTING CLOTHES')
   const allClothes = await Clothes.find()
   res.json(allClothes)
 }
@@ -32,10 +33,10 @@ async function getOneClothesData(req,res){
 
 async function getClothesDataByWeather(req,res){
   const weatherId = req.params.weatherId
+  console.log(weatherId)
   let clothesItems
   try {
     if (!parseInt(weatherId)){
-      console.log('FALSE')
       clothesItems = await Clothes.find()
     } else {
       clothesItems = await Clothes.find({ weather: weatherId })

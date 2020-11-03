@@ -44,6 +44,7 @@ export default function Header(props: any) {
       <h1>find the perfect clothes
 for the weather</h1>
       <p>get them delivered right in time for the day</p>
+      {/* GRAPH QL QUERY FOR WEATHER */}
       <Query query={WEATHER_QUERY} variables={{ day: 2, lat: locationCoords[0], lon: locationCoords[1] }}>
         {
           ({ loading, error, data }: any) => {
@@ -51,7 +52,7 @@ for the weather</h1>
             if (error) console.log(error)
             const { description, icon, } = data.forecast.weather[0]
             setWeather(data.forecast.weather[0])
-
+//         DISPLAY GET WEATHER BUTTON OR WEATHER ICON
             if (props.weather) {
               return (
                 <div className='animate__animated animate__zoomInDown'>
@@ -62,9 +63,7 @@ for the weather</h1>
               return <button className='btn-grad' onClick={findWeatherData}>Weather Check</button>
             }
           }
-
         }
-
       </Query>
     </header>
   );

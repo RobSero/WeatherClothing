@@ -22,7 +22,6 @@ const [weather, setWeather] = React.useState<WeatherDetails>()
       {weather && weather.id? 
       <AllProductSection weatherCode={weather.id} weatherDescription={weather.description} /> : 
       <AllProductSection weatherCode={0} /> }
-      
       </>
     )
   
