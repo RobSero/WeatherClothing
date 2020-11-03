@@ -1,7 +1,7 @@
 const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLSchema, GraphQLList, GraphQLFloat } = require('graphql')
 const axios = require('axios')
 const Clothes = require('../database/ClothingModels')
-// require('dotenv').config()
+require('dotenv').config()
 const key = process.env.WEATHER_API_KEY
 
 
@@ -87,6 +87,7 @@ const AllQueries = new GraphQLObjectType({
         lon: { type: GraphQLFloat }
       },
       resolve(parentValue,args) {
+        console.log('GETTING WEATHER')
         return axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${args.lat}&lon=${args.lon}&appid=${key}&exclude=minutely,hourly,current`)
           .then(res => res.data.daily[args.day])
       }

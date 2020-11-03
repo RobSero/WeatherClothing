@@ -49,10 +49,12 @@ for the weather</h1>
         {
           ({ loading, error, data }: any) => {
             if (loading) return <></>
-            if (error) console.log(error)
+            if (error) {
+              return <p></p>
+            }console.log(error)
             const { description, icon, } = data.forecast.weather[0]
             console.log(data)
-            if(data){
+            if(data && data.forecast){
               setWeather(data.forecast.weather[0])
             }
 //         DISPLAY GET WEATHER BUTTON OR WEATHER ICON
