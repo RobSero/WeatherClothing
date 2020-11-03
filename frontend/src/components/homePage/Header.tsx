@@ -48,7 +48,7 @@ for the weather</h1>
       <Query query={WEATHER_QUERY} variables={{ day: 2, lat: locationCoords[0], lon: locationCoords[1] }}>
         {
           ({ loading, error, data }: any) => {
-            if (loading) return <h1>LOADING NOW...</h1>
+            if (loading) return <></>
             if (error) console.log(error)
             const { description, icon, } = data.forecast.weather[0]
             setWeather(data.forecast.weather[0])
