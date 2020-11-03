@@ -48,7 +48,7 @@ for the weather</h1>
       <Query query={WEATHER_QUERY} variables={{ day: 2, lat: locationCoords[0], lon: locationCoords[1] }}>
         {
           ({ loading, error, data }: any) => {
-            if (loading) return <></>
+            if (loading) return <>loading</>
             if (error) {
               return <p></p>
             }console.log(error)
@@ -58,6 +58,7 @@ for the weather</h1>
               setWeather(data.forecast.weather[0])
             }
 //         DISPLAY GET WEATHER BUTTON OR WEATHER ICON
+
             if (props.weather) {
               return (
                 <div className='animate__animated animate__zoomInDown'>
